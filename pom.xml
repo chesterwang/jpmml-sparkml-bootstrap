@@ -63,12 +63,12 @@
             <artifactId>spark-mllib_2.10</artifactId>
             <version>[1.6.0, 1.6.2]</version>
             <!--<scope>provided</scope>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.jpmml</groupId>-->
-                    <!--<artifactId>pmml-model</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jpmml</groupId>
+                    <artifactId>pmml-model</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -82,7 +82,9 @@
             <artifactId>jpmml-sparkml</artifactId>
             <version>1.0.5</version>
         </dependency>
+
     </dependencies>
+
 
     <build>
         <plugins>
