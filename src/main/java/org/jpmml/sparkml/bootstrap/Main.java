@@ -18,10 +18,6 @@
  */
 package org.jpmml.sparkml.bootstrap;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
@@ -41,6 +37,10 @@ import org.apache.spark.sql.types.StructType;
 import org.dmg.pmml.PMML;
 import org.jpmml.model.MetroJAXBUtil;
 import org.jpmml.sparkml.ConverterUtil;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class Main {
 
@@ -139,7 +139,8 @@ public class Main {
 		}
 
 		predictor
-			.setLabelCol(formula.getLabelCol())
+			.setLabelCol(formula.getLabelCol());
+		predictor
 			.setFeaturesCol(formula.getFeaturesCol());
 
 		Pipeline pipeline = new Pipeline()

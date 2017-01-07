@@ -7,7 +7,7 @@ import org.apache.spark.mllib.linalg.Vectors
 /**
   * Created by chester on 16-9-15.
   */
-object KMeansModelPMML extends SparkPrepare{
+object KMeansModelPMML extends SparkRuntimePrepare{
   def main(args: Array[String]) {
 //    val sparkconf = new SparkConf().setMaster("local[*]").setAppName("asdf")
 //    val sc = new SparkContext(sparkconf)

@@ -297,7 +297,6 @@
                     <execution>
                         <goals>
                             <goal>test-jar</goal>
-                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -309,7 +308,7 @@
                             <classpathPrefix>lib/</classpathPrefix>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                            <!--<mainClass>com.ximalaya.brain.train.train.train.ClientRunner</mainClass>-->
+                            <!--<mainClass>ClientRunner类名</mainClass>-->
                         </manifest>
                     </archive>
                 </configuration>

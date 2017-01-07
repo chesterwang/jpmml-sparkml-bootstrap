@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_2" version="4.2">
+	<Header>
+		<Application name="JPMML-SparkML" version="1.0.5"/>
+		<Timestamp>2017-01-07T17:18:31Z</Timestamp>
+	</Header>
+	<DataDictionary>
+		<DataField name="a" optype="continuous" dataType="double"/>
+		<DataField name="b" optype="continuous" dataType="double"/>
+		<DataField name="d" optype="categorical" dataType="string">
+			<Value value="xiao"/>
+			<Value value="tuo"/>
+			<Value value="xxx"/>
+		</DataField>
+		<DataField name="e" optype="categorical" dataType="double">
+			<Value value="0"/>
+			<Value value="1"/>
+		</DataField>
+	</DataDictionary>
+	<TransformationDictionary>
+		<DerivedField name="buck_a" optype="continuous" dataType="integer">
+			<Discretize field="a">
+				<DiscretizeBin binValue="0">
+					<Interval closure="closedOpen" leftMargin="-10.0" rightMargin="0.0"/>
+				</DiscretizeBin>
+				<DiscretizeBin binValue="1">
+					<Interval closure="closedOpen" leftMargin="0.0" rightMargin="2.0"/>
+				</DiscretizeBin>
+				<DiscretizeBin binValue="2">
+					<Interval closure="closedOpen" leftMargin="2.0" rightMargin="5.0"/>
+				</DiscretizeBin>
+				<DiscretizeBin binValue="3">
+					<Interval closure="closedOpen" leftMargin="5.0" rightMargin="6.0"/>
+				</DiscretizeBin>
+				<DiscretizeBin binValue="4">
+					<Interval closure="closedOpen" leftMargin="6.0" rightMargin="9.0"/>
+				</DiscretizeBin>
+				<DiscretizeBin binValue="5">
+					<Interval closure="closedClosed" leftMargin="9.0" rightMargin="10.0"/>
+				</DiscretizeBin>
+			</Discretize>
+		</DerivedField>
+		<DerivedField name="bin_b" optype="continuous" dataType="double">
+			<Apply function="if">
+				<Apply function="lessOrEqual">
+					<FieldRef field="b"/>
+					<Constant dataType="double">5</Constant>
+				</Apply>
+				<Constant dataType="double">0</Constant>
+				<Constant dataType="double">1</Constant>
+			</Apply>
+		</DerivedField>
+	</TransformationDictionary>
+	<RegressionModel functionName="classification" normalizationMethod="softmax">
+		<MiningSchema>
+			<MiningField name="e" usageType="target"/>
+			<MiningField name="a"/>
+			<MiningField name="b"/>
+			<MiningField name="d"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability_0" feature="probability" value="0"/>
+			<OutputField name="probability_1" feature="probability" value="1"/>
+		</Output>
+		<RegressionTable intercept="26.285522187085387" targetCategory="1">
+			<NumericPredictor name="buck_a" coefficient="-7.611505579064417"/>
+			<NumericPredictor name="bin_b" coefficient="7.9676000413986525"/>
+			<NumericPredictor name="d" coefficient="-23.39867217826803"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.0" targetCategory="0"/>
+	</RegressionModel>
+</PMML>

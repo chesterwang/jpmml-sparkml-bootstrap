@@ -7,7 +7,7 @@ import org.apache.spark.mllib.regression.{LabeledPoint, LassoWithSGD, LinearRegr
 /**
   * Created by chester on 16-9-15.
   */
-object LinearRegressionModelPMML extends SparkPrepare {
+object LinearRegressionModelPMML extends SparkRuntimePrepare {
   def main(args: Array[String]) {
 
     val lp = Array[LabeledPoint](
